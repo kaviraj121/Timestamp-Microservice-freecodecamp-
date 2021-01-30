@@ -21,6 +21,7 @@ app.get("/", function (req, res) {
 
 // your first API endpoint... 
 app.get("/api/hello", function (req, res) {
+  console.log({greeting: 'hello API'});
   res.json({greeting: 'hello API'});
 });
 
@@ -37,12 +38,12 @@ app.get("api/timestamp", function(req, res){
 app.get("/api/timestamp/:date_string", function(req, res){
   let dataString = req.params.data_string;
 
-  if(parseInt(dateString) > 100000) {
+  if(parseInt(dateString) > 10000) {
     let unixTime = new Date(parseInt(dateString));
     res.json({
       "unix":unixTime.getTime(),
       "utc":unixTime.toUTCString()
-    })
+    });
   }
   let passedInValue = new Date(dataString);
   
